@@ -1,0 +1,31 @@
+[user]
+    name = Francis Screene
+    email = francis.screene@fospha.com
+
+[color]
+	ui = auto
+[core]
+	editor = vim
+
+[alias]
+	current-branch-name = "!git rev-parse --abbrev-ref HEAD"
+	up = "!git push -u origin $(git current-branch-name)"
+	down = "!git push origin :$(git current-branch-name)"
+	rename = "!git branch -m"
+	
+	branches = branch -a
+	tags = tag
+	stashes = stash list
+	unstage = reset -q HEAD
+	discard = checkout --
+	uncommit = reset --mixed HEAD~
+	amend = commit --amend
+	
+	get = checkout
+	
+	nevermind = !git reset --hard HEAD && git clean -d -f
+	
+	precommit = diff --cached --diff-algorithm=minimal -w
+	
+	master = checkout master
+	bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
